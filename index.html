@@ -81,6 +81,11 @@ html, body { overflow-x: clip; }
 .bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; }
 .bar::before { content: ""; position: absolute; inset: 0; margin: 0 calc(50% - 50vw); z-index: -1; background: color-mix(in srgb, var(--bg) 70%, transparent); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
 .bar .wrap { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 8px 0; }
+.av { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; display: grid; place-items: center; background: var(--surface-2); color: var(--accent); font: 700 2rem var(--font-head, inherit); border: 1px solid var(--line); flex: none; }
+.av.sm { width: 22px; height: 22px; font-size: 0.7rem; vertical-align: -6px; margin-right: 6px; border: 0; }
+.pfrow { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.kv { display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); gap: 6px 14px; font-size: 0.95rem; }
+.kv dt { color: var(--muted); } .kv dd { margin: 0; overflow-wrap: anywhere; }
 .tbtn { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--fg); padding: 0; min-width: 32px; min-height: 30px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
 .logo { font-family: var(--font-display); font-weight: 700; font-size: 1rem; text-decoration: none; color: var(--fg); letter-spacing: 0.02em; margin-right: auto; display: inline-flex; align-items: center; gap: 8px; }
 .logo .hat { font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; font-size: 1.25rem; line-height: 1; font-weight: 400; flex: none; }
@@ -309,7 +314,7 @@ uz: {
   have: "Hisobingiz bormi? Kirish", nohave: "Hisobingiz yo'qmi? Ro'yxatdan o'tish", e_fill: "Barcha maydonlarni to'ldiring.", e_bad: "Email yoki parol noto'g'ri.", e_exists: "Bu email allaqachon ro'yxatdan o'tgan. Kirish tugmasini bosing.", e_weak: "Parol kamida 6 ta belgidan iborat bo'lsin.", e_confirm: "Emailingizga tasdiqlash xati yuborildi. Havolani bosing, so'ng kiring.", e_net: "Xatolik yuz berdi. Internetni tekshirib, qayta urinib ko'ring.", e_big: "Fayl 5 MB dan oshmasin.", forgot: "Parolni unutdingizmi?", f_title: "Parolni tiklash", f_sub: "Emailingizni yozing, tiklash havolasini yuboramiz.", f_btn: "Havola yuborish", f_sent: "Agar bu email ro'yxatdan o'tgan bo'lsa, tiklash havolasi yuborildi. Pochtangizni (Spam papkasini ham) tekshiring.", f_back: "Kirishga qaytish", np_t: "Yangi parol", np_p1: "Yangi parol", np_p2: "Parolni takrorlang", np_btn: "Parolni saqlash", e_match: "Parollar bir xil emas.", e_expired: "Havola eskirgan yoki noto'g'ri. Tiklashni qaytadan so'rang.", e_rate: "Juda ko'p urinish. Birozdan keyin qayta urinib ko'ring.", e_same: "Yangi parol eskisidan farq qilsin.", np_ok: "Parol yangilandi.", e_none: "Bunday hisob topilmadi. Avval ro'yxatdan o'ting.",
   join: "Kursga yozilish", pay_t: "Kursga to'lov", pay_sum: "To'lov summasi", pay_card: "Karta raqami", pay_how: "Shu kartaga summani o'tkazing, so'ng chek rasmini yuklang.", up: "Chek rasmi", send: "Chekni yuborish", e_file: "Chek faylini tanlang.",
   st_wait: "Chek tekshirilmoqda", st_wait_p: "Tasdiqlangach darslar ochiladi. Sahifani keyinroq yangilang.", st_ok: "To'lov tasdiqlandi", go: "Darslarga o'tish",
-  s_open: "Ochiq", s_need: "To'lov kerak", open_btn: "Ochish", soon: "Tez orada", soon_p: "Bu kurs hozir tayyorlanmoqda. Ochilishi bilan shu yerda to'lov qilib yozilishingiz mumkin bo'ladi. Shu orada bepul asboblardan foydalaning.", soon_back: "Asosiy sahifa", soon_adm: "Faqat admin ko'radi",
+  s_open: "Ochiq", s_need: "To'lov kerak", open_btn: "Ochish", soon: "Tez orada", soon_p: "Bu kurs hozir tayyorlanmoqda. Ochilishi bilan shu yerda to'lov qilib yozilishingiz mumkin bo'ladi. Shu orada bepul asboblardan foydalaning.", soon_back: "Asosiy sahifa", soon_adm: "Faqat admin ko'radi", prof: "Profil", pf_t: "Mening profilim", pf_photo: "Rasm tanlash", pf_remove: "Rasmni o'chirish", pf_hint: "Rasm kvadrat qilib kesiladi va kichraytiriladi.", pf_name: "Ism", pf_save: "Saqlash", pf_saved: "Saqlandi", pf_email: "Email", pf_method: "Ro'yxatdan o'tish usuli", pf_m_email: "Email va parol", pf_m_google: "Google", pf_since: "Ro'yxatdan o'tgan sana", pf_courses: "Kurslarim", pf_pass: "Parolni o'zgartirish", pf_err: "Rasm yuklanmadi. Boshqa rasm bilan urinib ko'ring.", pf_nameerr: "Ism 2 dan 80 belgigacha bo'lsin.", pf_admin: "Admin",
   lock: "Bu dars to'lovdan keyin ochiladi.", pay_go: "To'lovga o'tish", video_note: "Video tez orada qo'shiladi.", playing: "Dars",
   adm_t: "Chek tekshiruvi (admin)", adm_note: "Namuna: faqat shu brauzerdagi to'lovlar ko'rinadi.", no_access: "Bu sahifa faqat administrator uchun.", approve: "Tasdiqlash", none: "Hozircha chek yo'q.", th1: "Ism", th2: "Pochta", th3: "Kurs", th4: "Fayl", th5: "Holat",
   watch: "Videoni ko'rish", edit_t: "Darsni tahrirlash (admin)", e_title: "Dars nomi", e_dur: "Davomiyligi (daqiqa)", e_url: "Video havolasi", e_file2: "Videoni shu yerda ko'rib chiqish", e_note: "Vimeo, YouTube yoki Bunny havolasini kiriting — video shu yerda ochiladi. Boshqa havola tugma sifatida chiqadi. Faqat 1-dars hamma uchun ochiq.", e_save: "Saqlash", saved: "Saqlandi",
@@ -377,7 +382,7 @@ ru: {
   have: "Есть аккаунт? Войти", nohave: "Нет аккаунта? Зарегистрироваться", e_fill: "Заполните все поля.", e_bad: "Неверный email или пароль.", e_exists: "Этот email уже зарегистрирован. Нажмите «Войти».", e_weak: "Пароль должен быть не короче 6 символов.", e_confirm: "Мы отправили письмо для подтверждения. Перейдите по ссылке, затем войдите.", e_net: "Произошла ошибка. Проверьте интернет и попробуйте снова.", e_big: "Файл не должен превышать 5 МБ.", forgot: "Забыли пароль?", f_title: "Восстановление пароля", f_sub: "Введите email, мы отправим ссылку для восстановления.", f_btn: "Отправить ссылку", f_sent: "Если этот email зарегистрирован, ссылка отправлена. Проверьте почту (и папку «Спам»).", f_back: "Назад ко входу", np_t: "Новый пароль", np_p1: "Новый пароль", np_p2: "Повторите пароль", np_btn: "Сохранить пароль", e_match: "Пароли не совпадают.", e_expired: "Ссылка устарела или недействительна. Запросите восстановление заново.", e_rate: "Слишком много попыток. Попробуйте чуть позже.", e_same: "Новый пароль должен отличаться от старого.", np_ok: "Пароль обновлён.", e_none: "Аккаунт не найден. Сначала зарегистрируйтесь.",
   join: "Записаться на курс", pay_t: "Оплата курса", pay_sum: "Сумма к оплате", pay_card: "Номер карты", pay_how: "Переведите сумму на эту карту, затем загрузите фото чека.", up: "Фото чека", send: "Отправить чек", e_file: "Выберите файл чека.",
   st_wait: "Чек на проверке", st_wait_p: "После подтверждения уроки откроются. Обновите страницу позже.", st_ok: "Оплата подтверждена", go: "Перейти к урокам",
-  s_open: "Открыт", s_need: "Нужна оплата", open_btn: "Открыть", soon: "Скоро", soon_p: "Этот курс сейчас готовится. Как только он откроется, здесь можно будет оплатить и записаться. А пока пользуйтесь бесплатными инструментами.", soon_back: "На главную", soon_adm: "Видно только админу",
+  s_open: "Открыт", s_need: "Нужна оплата", open_btn: "Открыть", soon: "Скоро", soon_p: "Этот курс сейчас готовится. Как только он откроется, здесь можно будет оплатить и записаться. А пока пользуйтесь бесплатными инструментами.", soon_back: "На главную", soon_adm: "Видно только админу", prof: "Профиль", pf_t: "Мой профиль", pf_photo: "Выбрать фото", pf_remove: "Удалить фото", pf_hint: "Фото обрезается до квадрата и уменьшается.", pf_name: "Имя", pf_save: "Сохранить", pf_saved: "Сохранено", pf_email: "Email", pf_method: "Способ регистрации", pf_m_email: "Email и пароль", pf_m_google: "Google", pf_since: "Дата регистрации", pf_courses: "Мои курсы", pf_pass: "Сменить пароль", pf_err: "Фото не загрузилось. Попробуйте другое фото.", pf_nameerr: "Имя от 2 до 80 символов.", pf_admin: "Админ",
   lock: "Этот урок откроется после оплаты.", pay_go: "Перейти к оплате", video_note: "Видео скоро появится.", playing: "Урок",
   adm_t: "Проверка чеков (админ)", adm_note: "Пример: видны только платежи из этого браузера.", no_access: "Эта страница только для администратора.", approve: "Подтвердить", none: "Чеков пока нет.", th1: "Имя", th2: "Почта", th3: "Курс", th4: "Файл", th5: "Статус",
   watch: "Смотреть видео", edit_t: "Редактирование урока (админ)", e_title: "Название урока", e_dur: "Длительность (минуты)", e_url: "Ссылка на видео", e_file2: "Посмотреть видео здесь", e_note: "Вставьте ссылку Vimeo, YouTube или Bunny — видео откроется здесь. Другая ссылка появится как кнопка. Открыт для всех только урок 1.", e_save: "Сохранить", saved: "Сохранено",
@@ -445,7 +450,7 @@ en: {
   have: "Have an account? Log in", nohave: "No account? Sign up", e_fill: "Fill in all fields.", e_bad: "Incorrect email or password.", e_exists: "This email is already registered. Use Log in.", e_weak: "Password must be at least 6 characters.", e_confirm: "We sent a confirmation email. Open the link, then log in.", e_net: "Something went wrong. Check your connection and try again.", e_big: "File must be 5 MB or smaller.", forgot: "Forgot password?", f_title: "Reset password", f_sub: "Enter your email and we will send a reset link.", f_btn: "Send link", f_sent: "If this email is registered, a reset link has been sent. Check your inbox (and Spam).", f_back: "Back to log in", np_t: "New password", np_p1: "New password", np_p2: "Repeat password", np_btn: "Save password", e_match: "Passwords do not match.", e_expired: "The link is expired or invalid. Request a new one.", e_rate: "Too many attempts. Try again in a moment.", e_same: "New password must differ from the old one.", np_ok: "Password updated.", e_none: "No account found. Sign up first.",
   join: "Enroll in the course", pay_t: "Course payment", pay_sum: "Amount to pay", pay_card: "Card number", pay_how: "Transfer the amount to this card, then upload a photo of the receipt.", up: "Receipt photo", send: "Send receipt", e_file: "Choose the receipt file.",
   st_wait: "Receipt under review", st_wait_p: "Lessons unlock after approval. Refresh the page later.", st_ok: "Payment approved", go: "Go to lessons",
-  s_open: "Unlocked", s_need: "Payment needed", open_btn: "Open", soon: "Coming soon", soon_p: "This course is being prepared. Once it opens you can pay and enroll here. In the meantime, try the free tools.", soon_back: "Home", soon_adm: "Visible to admin only",
+  s_open: "Unlocked", s_need: "Payment needed", open_btn: "Open", soon: "Coming soon", soon_p: "This course is being prepared. Once it opens you can pay and enroll here. In the meantime, try the free tools.", soon_back: "Home", soon_adm: "Visible to admin only", prof: "Profile", pf_t: "My profile", pf_photo: "Choose photo", pf_remove: "Remove photo", pf_hint: "The photo is cropped to a square and shrunk.", pf_name: "Name", pf_save: "Save", pf_saved: "Saved", pf_email: "Email", pf_method: "Signed up with", pf_m_email: "Email and password", pf_m_google: "Google", pf_since: "Member since", pf_courses: "My courses", pf_pass: "Change password", pf_err: "Photo upload failed. Try another photo.", pf_nameerr: "Name must be 2–80 characters.", pf_admin: "Admin",
   lock: "This lesson unlocks after payment.", pay_go: "Go to payment", video_note: "The video will be added soon.", playing: "Lesson",
   adm_t: "Receipt review (admin)", adm_note: "Sample: only payments made in this browser are shown.", no_access: "This page is for the administrator only.", approve: "Approve", none: "No receipts yet.", th1: "Name", th2: "Email", th3: "Course", th4: "File", th5: "Status",
   watch: "Watch video", edit_t: "Edit lesson (admin)", e_title: "Lesson title", e_dur: "Duration (minutes)", e_url: "Video link", e_file2: "Preview a video here", e_note: "Paste a Vimeo, YouTube or Bunny link — the video plays here. Any other link shows as a button. Only lesson 1 is open to everyone.", e_save: "Save", saved: "Saved",
@@ -493,8 +498,8 @@ const prog = id => S.prog[id] || [];
 const journal = () => S.jr;
 const titles = id => t(course(id).lk).map((x, i) => { const m = S.meta[id + ":" + i]; return (m && m.title && m.title[lang]) || x; });
 const meta = (id, i) => { const m = S.meta[id + ":" + i] || {}; return { dur: m.dur || undefined, url: S.vid[id + ":" + i] || "" }; };
-const sigOf = () => JSON.stringify([!!S.user, S.admin, S.orders.map(o => [o.id, o.status]), S.msgs.map(m => [m.id, m.reply]), S.prog, S.jr.length, S.meta, S.vid]);
-const SIGN = {};
+const sigOf = () => JSON.stringify([!!S.user, S.user && [S.user.name, S.user.avatar_path], S.admin, S.orders.map(o => [o.id, o.status]), S.msgs.map(m => [m.id, m.reply]), S.prog, S.jr.length, S.meta, S.vid]);
+const SIGN = {}, AVC = { path: "", url: "", exp: 0 };
 const okData = r => { if (r.error) throw r.error; return r.data || []; };
 function resetS() { S.user = null; S.admin = false; S.orders = []; S.msgs = []; S.prog = {}; S.jr = []; S.agreed = false; }
 async function loadAll() {
@@ -514,7 +519,13 @@ async function loadAll() {
   ]);
   if (pf.error) throw pf.error;
   const prof = pf.data || {};
-  S.user = { id: u.id, email: u.email, name: prof.name || (u.user_metadata && u.user_metadata.name) || "" };
+  S.user = { id: u.id, email: u.email, name: prof.name || (u.user_metadata && u.user_metadata.name) || "", avatar_path: prof.avatar_path || "", avatar: "", created: u.created_at || "", provider: (u.app_metadata && u.app_metadata.provider) || "email" };
+  if (S.user.avatar_path) {
+    if (!(AVC.path === S.user.avatar_path && AVC.exp > Date.now())) {
+      try { const r = await SB.storage.from("avatars").createSignedUrl(S.user.avatar_path, 3600); AVC.path = S.user.avatar_path; const su = (r.data && r.data.signedUrl) || ""; AVC.url = su.includes("?") ? su + "&t=" + Date.now() : su; AVC.exp = Date.now() + 50 * 60000; } catch (e) { AVC.url = ""; }
+    }
+    S.user.avatar = AVC.url;
+  }
   S.agreed = !!prof.agreed_at;
   S.admin = !!ad.data;
   S.orders = okData(od).map(o => ({ id: o.id, user_id: o.user_id, email: o.email, name: o.name, course: o.course, file: o.file_name || "", status: o.status, at: Date.parse(o.created_at), path: o.receipt_path, img: "", pdf: "" }));
@@ -596,7 +607,7 @@ function header() {
       '<a href="#" data-scroll="courses">' + t("nav_course") + '</a>' +
       '<a href="#chart">' + t("nav_chart") + '</a>' +
       '<a href="#tools">' + t("nav_tools") + '</a>' +
-      (u ? '<a href="#learn">' + t("mine") + '</a>' + (isAdmin() ? '<a href="#admin">Admin' + (supOpen() ? ' <span class="pill pending" style="margin-left:6px">' + supOpen() + '</span>' : '') + '</a>' : '') + '<button class="link" id="logout">' + t("logout") + '</button>'
+      (u ? '<a href="#learn">' + t("mine") + '</a><a href="#profile">' + avatarEl("sm") + t("prof") + '</a>' + (isAdmin() ? '<a href="#admin">Admin' + (supOpen() ? ' <span class="pill pending" style="margin-left:6px">' + supOpen() + '</span>' : '') + '</a>' : '') + '<button class="link" id="logout">' + t("logout") + '</button>'
          : '<a href="#auth">' + t("login") + '</a>') +
     '</nav>' +
     (function () { const to = et === "dark" ? "light" : "dark"; return '<button class="tbtn" data-theme-btn="' + to + '" aria-label="' + t("th_" + to) + '" title="' + t("th_" + to) + '">' + ICON[to] + '</button>'; })() +
@@ -834,6 +845,81 @@ function bindPay(c) {
       if (ins.error && ins.error.code !== "23505") throw ins.error;
       payError = ""; await loadAll(); render();
     } catch (x) { console.error(x); er(t("e_net")); b.disabled = false; }
+  };
+}
+
+/* ---------- profile ---------- */
+const initials = n => ((n || "?").trim().split(/\s+/).slice(0, 2).map(x => x[0] || "").join("") || "?").toUpperCase();
+function avatarEl(sz) {
+  const u = S.user; if (!u) return "";
+  const c = "av" + (sz ? " " + sz : "");
+  return u.avatar ? '<img class="' + c + '" src="' + esc(u.avatar) + '" alt="">' : '<span class="' + c + '" aria-hidden="true">' + esc(initials(u.name || u.email)) + '</span>';
+}
+const fmtDate = iso => { const d = new Date(iso); return isNaN(d) ? "—" : String(d.getDate()).padStart(2, "0") + "." + String(d.getMonth() + 1).padStart(2, "0") + "." + d.getFullYear(); };
+function profileView() {
+  const u = S.user;
+  const prov = u.provider === "google" ? t("pf_m_google") : t("pf_m_email");
+  const rows = COURSES.map(c => {
+    const st = !isOpen(c.id) ? ["pending", t("soon")] : hasAccess(c.id) ? ["ok", t("s_open")] : myOrder(c.id) ? ["pending", t("st_wait")] : ["", t("s_need")];
+    return '<div class="row"><span>' + t("ct_" + c.id) + '</span><span class="pill ' + st[0] + '">' + st[1] + '</span></div>';
+  }).join("");
+  return '<div class="narrow" style="max-width:640px"><h1 style="font-size:1.6rem">' + t("pf_t") + '</h1>' +
+    '<div class="card" style="display:grid;gap:16px"><div class="pfrow">' + avatarEl("") +
+      '<div style="display:grid;gap:8px"><div style="font-weight:600;font-size:1.1rem">' + esc(u.name || u.email) + (isAdmin() ? ' <span class="pill ok">' + t("pf_admin") + '</span>' : '') + '</div>' +
+      '<div class="cta"><label class="btn ghost" for="pf-file" style="cursor:pointer">' + t("pf_photo") + '</label>' +
+      (u.avatar_path ? '<button class="btn ghost" id="pf-del" type="button">' + t("pf_remove") + '</button>' : '') + '</div>' +
+      '<input id="pf-file" type="file" accept="image/*" style="position:absolute;opacity:0;width:1px;height:1px">' +
+      '<p class="hint">' + t("pf_hint") + '</p></div></div>' +
+    '<form id="pf-form" class="field" style="gap:10px"><label for="pf-name">' + t("pf_name") + '</label><input id="pf-name" type="text" maxlength="80" value="' + esc(u.name) + '" autocomplete="name">' +
+      '<div class="cta"><button class="btn" type="submit">' + t("pf_save") + '</button></div></form>' +
+    '<p class="hint" id="pf-msg" role="status"></p><p class="hint" id="pf-err" role="alert" style="color:var(--bad,#c0392b)"></p></div>' +
+    '<div class="card"><dl class="kv"><dt>' + t("pf_email") + '</dt><dd>' + esc(u.email) + '</dd><dt>' + t("pf_method") + '</dt><dd>' + prov + '</dd><dt>' + t("pf_since") + '</dt><dd>' + fmtDate(u.created) + '</dd></dl></div>' +
+    '<div class="card" style="display:grid;gap:12px"><h3>' + t("pf_courses") + '</h3>' + rows + '</div>' +
+    '<div class="cta"><a class="btn ghost" href="#newpass">' + t("pf_pass") + '</a><a class="btn ghost" href="#support">' + t("sup_btn") + '</a></div></div>';
+}
+function avatarBlob(f) {
+  return new Promise(res => {
+    const url = URL.createObjectURL(f), im = new Image();
+    im.onload = () => {
+      const s = Math.min(im.width, im.height), c = document.createElement("canvas"); c.width = c.height = 256;
+      c.getContext("2d").drawImage(im, (im.width - s) / 2, (im.height - s) / 2, s, s, 0, 0, 256, 256);
+      URL.revokeObjectURL(url); c.toBlob(b => res(b || null), "image/jpeg", 0.85);
+    };
+    im.onerror = () => { URL.revokeObjectURL(url); res(null); };
+    im.src = url;
+  });
+}
+function bindProfile() {
+  const er = document.getElementById("pf-err"), ms = document.getElementById("pf-msg");
+  const say = (m, bad) => { (bad ? er : ms).textContent = m; (bad ? ms : er).textContent = ""; };
+  const file = document.getElementById("pf-file");
+  file.onchange = async () => {
+    const f = file.files[0]; if (!f) return;
+    try {
+      const b = await avatarBlob(f); if (!b) { say(t("pf_err"), true); return; }
+      const path = S.user.id + "/avatar.jpg";
+      const up = await SB.storage.from("avatars").upload(path, b, { contentType: "image/jpeg", upsert: true }); if (up.error) throw up.error;
+      const r = await SB.from("profiles").update({ avatar_path: path }).eq("id", S.user.id); if (r.error) throw r.error;
+      AVC.exp = 0; await loadAll(); render();
+    } catch (x) { console.error(x); say(t("pf_err"), true); }
+    file.value = "";
+  };
+  const del = document.getElementById("pf-del");
+  if (del) del.onclick = async () => {
+    try {
+      await SB.storage.from("avatars").remove([S.user.avatar_path]);
+      const r = await SB.from("profiles").update({ avatar_path: null }).eq("id", S.user.id); if (r.error) throw r.error;
+      AVC.exp = 0; AVC.path = ""; await loadAll(); render();
+    } catch (x) { console.error(x); say(t("pf_err"), true); }
+  };
+  document.getElementById("pf-form").onsubmit = async e => {
+    e.preventDefault();
+    const n = document.getElementById("pf-name").value.trim();
+    if (n.length < 2 || n.length > 80) { say(t("pf_nameerr"), true); return; }
+    try {
+      const r = await SB.from("profiles").update({ name: n }).eq("id", S.user.id); if (r.error) throw r.error;
+      await loadAll(); header(); say(t("pf_saved"), false);
+    } catch (x) { console.error(x); say(t("pf_err"), true); }
   };
 }
 
@@ -1415,6 +1501,10 @@ function render() {
     app.innerHTML = learn(c) + footer(); bindLearn(c);
   }
   else if (name === "learn") { app.innerHTML = myCourses() + footer(); }
+  else if (name === "profile") {
+    if (!user()) { next = "profile"; authMode = "login"; go("auth"); return; }
+    app.innerHTML = profileView() + footer(); bindProfile();
+  }
   else if (name === "support") {
     if (!user()) { next = "support"; authMode = "reg"; go("auth"); return; }
     app.innerHTML = support() + footer(); bindSupport();
