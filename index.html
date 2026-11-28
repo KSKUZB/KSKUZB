@@ -94,6 +94,21 @@ html, body { overflow-x: clip; }
   background: color-mix(in srgb, var(--surface) 40%, transparent); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
   -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
 .nav a:hover, .nav button.link:hover { background: color-mix(in srgb, var(--surface) 72%, transparent); }
+.hbtn { flex: none; }
+#drw { position: fixed; inset: 0; z-index: 60; visibility: hidden; }
+#drw.open { visibility: visible; }
+.drw-bg { position: absolute; inset: 0; background: rgba(0,0,0,.5); opacity: 0; transition: opacity .2s; }
+#drw.open .drw-bg { opacity: 1; }
+.drw-p { position: absolute; top: 0; bottom: 0; left: 0; width: min(84vw, 330px); background: var(--bg); border-right: 1px solid var(--line); box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; overflow-y: auto; overscroll-behavior: contain;
+  padding-top: calc(14px + env(safe-area-inset-top, 0px)); padding-bottom: calc(18px + env(safe-area-inset-bottom, 0px)); padding-left: max(14px, env(safe-area-inset-left, 0px)); padding-right: 14px;
+  transform: translateX(-100%); transition: transform .22s ease; }
+#drw.open .drw-p { transform: none; }
+.drw-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.drw-p a, .drw-p button.dl { display: flex; align-items: center; gap: 10px; width: 100%; box-sizing: border-box; padding: 12px; min-height: 46px; border-radius: 10px; color: var(--fg); text-decoration: none; font: inherit; font-size: 1rem; font-weight: 500; background: none; border: 0; text-align: left; cursor: pointer; }
+.drw-p a:hover, .drw-p button.dl:hover { background: var(--surface); }
+.drw-sep { height: 1px; background: var(--line); margin: 8px 0; flex: none; }
+.drw-sm { font-size: 0.86rem !important; color: var(--muted) !important; min-height: 38px !important; }
+@media (prefers-reduced-motion: reduce) { .drw-p, .drw-bg { transition: none; } }
 .lang { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
 .lang button { background: var(--surface); border: 0; padding: 4px 9px; cursor: pointer; font-family: var(--font-mono); font-size: 0.76rem; color: var(--muted); display: inline-flex; align-items: center; justify-content: center; min-width: 32px; min-height: 28px; }
 .lang button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
@@ -254,7 +269,7 @@ footer .row { justify-content: space-between; }
 /* ---------- translations ---------- */
 const L = {
 uz: {
-  nav_course: "Kurslar", nav_calc: "Kalkulyator", login: "Kirish", logout: "Chiqish", mine: "Darslarim", th_light: "Yorqin rejim", th_dark: "Tungi rejim", theme: "Rejim",
+  nav_course: "Kurslar", nav_calc: "Kalkulyator", login: "Kirish", logout: "Chiqish", mine: "Darslarim", th_light: "Yorqin rejim", th_dark: "Tungi rejim", theme: "Rejim", menu_t: "Menyu", menu_x: "Yopish", nav_sim: "Simulyator",
   eyebrow: "Treyding kurslari",
   h1: "Avval kapitalingizni himoya qiling, keyin uni o'stiring",
   lead: "Treyderlar ko'pincha strategiyada emas, risk boshqaruvida yutqazadi. Kurslarda risk, stop-loss, pozitsiya hajmi va strategiyani raqamlar bilan baholashni amalda o'rganasiz.",
@@ -322,7 +337,7 @@ uz: {
   lessons_math: ["Ehtimollik va matematik kutilma", "Win rate va risk/foyda: strategiya formulasi", "Zararlar ketma-ketligi va kapitalni yo'qotish xavfi", "Backtest: strategiyani tarixda sinash", "Kelly mezoni va pozitsiya hajmi", "Strategiyani jurnalga yozish va baholash"]
 },
 ru: {
-  nav_course: "Курсы", nav_calc: "Калькулятор", login: "Войти", logout: "Выйти", mine: "Мои уроки", th_light: "Светлая тема", th_dark: "Тёмная тема", theme: "Тема",
+  nav_course: "Курсы", nav_calc: "Калькулятор", login: "Войти", logout: "Выйти", mine: "Мои уроки", th_light: "Светлая тема", th_dark: "Тёмная тема", theme: "Тема", menu_t: "Меню", menu_x: "Закрыть", nav_sim: "Симулятор",
   eyebrow: "Курсы по трейдингу",
   h1: "Сначала защитите капитал, потом приумножайте его",
   lead: "Трейдеры чаще проигрывают не из-за стратегии, а из-за управления риском. На курсах вы на практике научитесь считать риск, стоп-лосс, размер позиции и оценивать стратегию цифрами.",
@@ -390,7 +405,7 @@ ru: {
   lessons_math: ["Вероятность и математическое ожидание", "Винрейт и риск/прибыль: формула стратегии", "Серии убытков и риск потери капитала", "Бэктест: проверка стратегии на истории", "Критерий Келли и размер позиции", "Запись стратегии в журнал и оценка"]
 },
 en: {
-  nav_course: "Courses", nav_calc: "Calculator", login: "Log in", logout: "Log out", mine: "My lessons", th_light: "Light mode", th_dark: "Dark mode", theme: "Theme",
+  nav_course: "Courses", nav_calc: "Calculator", login: "Log in", logout: "Log out", mine: "My lessons", th_light: "Light mode", th_dark: "Dark mode", theme: "Theme", menu_t: "Menu", menu_x: "Close", nav_sim: "Simulator",
   eyebrow: "Trading courses",
   h1: "Protect your capital first, then grow it",
   lead: "Traders usually lose to risk handling, not to strategy. In these courses you practise risk, stop-loss placement, position sizing and judging a strategy by the numbers.",
@@ -604,22 +619,52 @@ function applyTheme() {
 }
 
 /* ---------- header ---------- */
+let menuOpen = false;
+function setMenu(v, focusBack) {
+  menuOpen = !!v;
+  const d = document.getElementById("drw"); if (!d) return;
+  d.classList.toggle("open", menuOpen);
+  const b = document.getElementById("menubtn"); if (b) b.setAttribute("aria-expanded", String(menuOpen));
+  document.body.style.overflow = menuOpen ? "hidden" : "";
+  if (menuOpen) { const x = document.getElementById("drw-x"); if (x) x.focus(); }
+  else if (focusBack && b) b.focus();
+}
 function header() {
   const u = user(), et = effTheme();
+  let d = document.getElementById("drw");
+  if (!d) { d = document.createElement("div"); d.id = "drw"; document.body.appendChild(d); }
+  const dsup = supOpen();
+  d.innerHTML =
+    '<div class="drw-bg" id="drw-bg"></div>' +
+    '<nav class="drw-p" id="drw-p" role="dialog" aria-modal="true" aria-label="' + t("menu_t") + '">' +
+      '<div class="drw-top"><a class="logo" href="#" aria-label="KSKUZB" style="width:auto;padding:0;min-height:0"><span class="hat" aria-hidden="true">🎩</span>KSKUZB</a>' +
+        '<button class="tbtn" id="drw-x" aria-label="' + t("menu_x") + '" title="' + t("menu_x") + '">✕</button></div>' +
+      '<a href="#main">🏠 ' + t("nav_main") + '</a>' +
+      '<a href="#" data-scroll="courses">🎓 ' + t("nav_course") + '</a>' +
+      '<a href="#chart">📈 ' + t("nav_chart") + '</a>' +
+      '<a href="#tools">🧮 ' + t("nav_tools") + '</a>' +
+      '<a href="#sim">🎯 ' + t("nav_sim") + '</a>' +
+      '<a href="#game">🏆 ' + tg("t") + '</a>' +
+      '<div class="drw-sep"></div>' +
+      (u ? '<a href="#learn">📚 ' + t("mine") + '</a><a href="#profile">' + avatarEl("sm") + t("prof") + '</a>' : '') +
+      '<a href="#support">💬 ' + t("sup_btn") + (u && isAdmin() && dsup ? ' <span class="pill pending" style="margin-left:6px">' + dsup + '</span>' : '') + '</a>' +
+      (u && isAdmin() ? '<a href="#admin">🛠 Admin' + (dsup ? ' <span class="pill pending" style="margin-left:6px">' + dsup + '</span>' : '') + '</a>' : '') +
+      '<div class="drw-sep"></div>' +
+      '<a class="drw-sm" href="#terms">' + t("lg_terms_t") + '</a><a class="drw-sm" href="#privacy">' + t("lg_priv_t") + '</a>' +
+      '<div class="drw-sep"></div>' +
+      (u ? '<button class="dl" id="logout">🚪 ' + t("logout") + '</button>' : '<a href="#auth">🔑 ' + t("login") + '</a>') +
+    '</nav>';
+  d.classList.toggle("open", menuOpen);
   document.getElementById("hdr").innerHTML =
+    '<button class="tbtn hbtn" id="menubtn" aria-label="' + t("menu_t") + '" title="' + t("menu_t") + '" aria-expanded="' + menuOpen + '" aria-controls="drw-p">☰</button>' +
     '<a class="logo" href="#" aria-label="KSKUZB"><span class="hat" aria-hidden="true">🎩</span>KSKUZB</a>' +
-    '<nav class="nav" aria-label="Main">' +
-      '<a href="#main">' + t("nav_main") + '</a>' +
-      '<a href="#" data-scroll="courses">' + t("nav_course") + '</a>' +
-      '<a href="#chart">' + t("nav_chart") + '</a>' +
-      '<a href="#tools">' + t("nav_tools") + '</a>' +
-      (u ? '<a href="#learn">' + t("mine") + '</a><a href="#profile">' + avatarEl("sm") + t("prof") + '</a>' + (isAdmin() ? '<a href="#admin">Admin' + (supOpen() ? ' <span class="pill pending" style="margin-left:6px">' + supOpen() + '</span>' : '') + '</a>' : '') + '<button class="link" id="logout">' + t("logout") + '</button>'
-         : '<a href="#auth">' + t("login") + '</a>') +
-    '</nav>' +
     (function () { const to = et === "dark" ? "light" : "dark"; return '<button class="tbtn" data-theme-btn="' + to + '" aria-label="' + t("th_" + to) + '" title="' + t("th_" + to) + '">' + ICON[to] + '</button>'; })() +
     '<div class="lang" role="group" aria-label="Language">' +
       ["uz", "ru", "en"].map(l => '<button data-lang="' + l + '" aria-pressed="' + (l === lang) + '">' + l.toUpperCase() + '</button>').join("") +
     '</div>';
+  document.getElementById("menubtn").onclick = () => setMenu(true);
+  document.getElementById("drw-x").onclick = () => setMenu(false, true);
+  document.getElementById("drw-bg").onclick = () => setMenu(false, true);
   document.querySelectorAll("[data-lang]").forEach(b => b.onclick = () => { lang = b.dataset.lang; sv("ksk-lang", lang); render(); });
   document.querySelectorAll("[data-theme-btn]").forEach(b => b.onclick = () => { theme = b.dataset.themeBtn; sv("ksk-theme", theme); applyTheme(); header(); if (CH.active) drawChart(); });
   const lo = document.getElementById("logout"); if (lo) lo.onclick = async () => { try { await SB.auth.signOut(); } catch (e) {} resetS(); if (location.hash.length > 1) go(""); else render(); };
@@ -628,7 +673,10 @@ function header() {
     if (location.hash.length > 1) { pending = a.dataset.scroll; location.hash = ""; }
     else { const el = document.getElementById(a.dataset.scroll); if (el) el.scrollIntoView({ behavior: "smooth" }); }
   });
+  d.querySelectorAll("a, button.dl").forEach(el => el.addEventListener("click", () => setMenu(false)));
 }
+document.addEventListener("keydown", e => { if (e.key === "Escape" && menuOpen) setMenu(false, true); });
+window.addEventListener("hashchange", () => { if (menuOpen) setMenu(false); });
 
 /* ---------- home ---------- */
 function courseCard(c) {
